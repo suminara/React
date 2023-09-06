@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>리액트 버튼 만들기</title>
+  </head>
+  <body>
+    <h1>리액트 버튼 만들기</h1>
+    <p>이 버튼을 누르면 "Hello"라고 나와요!</p>
+    <div id="root"></div> <!-- 버튼을 보여줄 장소 -->
+
+    <!-- 리액트와 버튼을 만드는 데 필요한 것들을 가져와요 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- 버튼을 만들고 보여주는 코드에요 -->
+    <script type="text/babel">
+      // 버튼을 만드는 함수에요
+      function HelloButton(props) {
+        return (
+          <button onClick={() => console.log('클릭됨!')}>
+            Hello
+          </button>
+        );
+      }
+
+      // 버튼을 여러 번 보여주는 역할을 하는 부분이에요
+      const app = (
+        <div>
+          <HelloButton/>
+          <HelloButton/>
+          <HelloButton/>
+        </div>
+      );
+
+      // 버튼을 웹 페이지에 넣어주는 코드에요
+      const domContainer = document.querySelector('#root'); // "root"라고 쓴 곳을 찾아서
+      const root = ReactDOM.createRoot(domContainer); // 리액트에게 알려줘서
+      root.render(app, domContainer); // 버튼들을 화면에 보여줘요!
+
+// const domContainer = document.querySelector('#root');:
+// 이 코드는 HTML 문서에서 id가 "root"인 요소를 찾습니다. "root" 요소는 React 앱이 실제로 화면에 렌더링되는 위치를 지정합니다.
+// document.querySelector('#root')를 통해 "root" 요소를 domContainer 변수에 저장합니다.
+
+// const root = ReactDOM.createRoot(domContainer);:
+// createRoot 함수는 리액트 애플리케이션의 루트를 생성합니다. 리액트 앱은 가상 DOM을 사용하여 화면을 관리하고 업데이트하는데, 이를 위해 루트(root)가 필요합니다.
+// createRoot 함수를 호출하여 domContainer에 리액트 앱의 루트를 생성하고, 그 결과를 root 변수에 저장합니다.
+
+// root.render(app, domContainer);:
+// 이 코드는 리액트 앱의 컴포넌트를 실제로 화면에 렌더링하는 부분입니다.
+// app 변수에 정의된 리액트 컴포넌트 (JSX로 작성된 버튼)를 root.render 함수를 사용하여 domContainer에 렌더링합니다.
+// root.render 함수는 app을 domContainer에 삽입하고, 웹 페이지에 컴포넌트를 렌더링합니다.
+// 결과적으로 "Hello" 버튼이 웹 페이지에 표시됩니다.
+    </script>
+  </body>
+</html>

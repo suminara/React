@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>리액트 1분만에 추가해보기!</title>
+  </head>
+  <body>
+    <h1>내 html에 리액트 1분만에 추가해보기!</h1>
+    <p>단 1분만에 설치없이 리액트를 추가할 수 있다구요?</p>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+	  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        function HelloButton(props) {
+            const [text, setText] = React.useState('Hello');
+
+            // 이 코드는 React의 useState 훅을 사용하여 text라는 변수와 setText라는 함수를 생성합니다. text 변수는 현재 버튼에 표시되는 텍스트를 나타냅니다. React.useState('Hello')는 초기값으로 "Hello"라는 문자열을 가지고 시작한다는 것을 의미합니다.
+
+            function handleClickButton() {
+                setText('Hello World');
+            }
+
+            return (
+                <button onClick={handleClickButton}>
+                    {text}
+                </button>
+            );
+            // 함수를 직접 넣지 않는 이유는 React의 이벤트 핸들러에 함수를 직접 전달하면 해당 함수가 즉시 실행되어버리기 때문
+            // setText 함수를 클릭 시에 호출하고, 이벤트 핸들러를 올바르게 작동시킵니다. 함수가 클릭 이벤트에 의해 실행되어야 하기 때문에 익명 함수가 필요합니다.
+            // 그러므로 onClick={() => setText('Hello World')}와 같은 형태를 사용하여 클릭 이벤트가 버튼 클릭 시에 setText 함수를 호출하도록 해야 합니다.
+        }
+
+        const app = (
+            <div>
+                <HelloButton/>
+                <HelloButton/>
+                <HelloButton/>
+                <HelloButton/>
+                <HelloButton/>
+            </div>
+        );
+
+        // DOM에 리액트 컴포넌트 랜더링하기
+				const domContainer = document.querySelector('#root');
+				const root = ReactDOM.createRoot(domContainer);
+				root.render(app, domContainer);
+    </script>
+  </body>
+</html>
