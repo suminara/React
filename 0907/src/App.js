@@ -1,8 +1,14 @@
+import React from 'react';
+import Time from '/Time.js';
+
+
 function App() {
-  return (
-    <div>
-      hello world
-    </div>
-  );
+    return (
+        <React.Fragment>
+            <Time />
+            <listRender />
+        </React.Fragment>
+    )
 }
+
 export default App;
